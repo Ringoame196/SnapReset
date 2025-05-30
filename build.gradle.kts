@@ -24,9 +24,12 @@ tasks.register<Copy>("reset") {
     val srcDir = projectDir.resolve(srcDirPath).apply(File::mkdirs)
     srcDir.resolve("Main.java").writeText(
         """
+            import java.util.*;
+            
             public class Main {
                 public static void main(String[] args) {
-
+                    Scanner sc = new Scanner(System.in);
+                    System.out.println("Hello World");
                 }
             }
             """.trimIndent()
