@@ -20,9 +20,9 @@ kotlin {
     jvmToolchain(22)
 }
 tasks.register<Copy>("reset") {
-    val srcDirPath = "src/main/java/"
-    val srcDir = projectDir.resolve(srcDirPath).apply(File::mkdirs)
-    srcDir.resolve("Main.java").writeText(
+    val srcJavaDirPath = "src/main/java/"
+    val srcJavaDir = projectDir.resolve(srcJavaDirPath).apply(File::mkdirs)
+    srcJavaDir.resolve("Main.java").writeText(
         """
             import java.util.*;
             
@@ -32,6 +32,19 @@ tasks.register<Copy>("reset") {
                     System.out.println("Hello World");
                 }
             }
-            """.trimIndent()
+        """.trimIndent()
+    )
+
+    val srcKotlinDirPath = "src/main/kotlin/"
+    val srcKotlinDir = projectDir.resolve(srcKotlinDirPath).apply(File::mkdirs)
+    srcKotlinDir.resolve("Main.kt").writeText(
+        """
+            import java.util.Scanner
+
+            fun main(args: Array<String>) {
+	            val scanner = Scanner(System.`in`)
+	            println("Hello World")
+            }
+        """.trimIndent()
     )
 }
